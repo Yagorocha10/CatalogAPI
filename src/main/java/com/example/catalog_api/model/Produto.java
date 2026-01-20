@@ -1,7 +1,5 @@
 package com.example.catalog_api.model;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "produtos")
@@ -9,13 +7,9 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     private Long id;
-    @NotBlank
     private String nome;
-    @NotBlank
     private String descricao;
-    @NotNull
     private Double preco;
 
     @Enumerated(EnumType.STRING)
@@ -24,12 +18,12 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(Long id, String nome, String descricao, Double preco, Categoria categoria) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.categoria = categoria;
+
+    public Produto(DadosCadastroProduto dadosCadastroProduto) {
+        this.nome = dadosCadastroProduto.nome();
+        this.descricao = dadosCadastroProduto.descricao();
+        this.preco = dadosCadastroProduto.preco();
+        this.categoria = dadosCadastroProduto.categoria();
     }
 
     public Long getId() {
