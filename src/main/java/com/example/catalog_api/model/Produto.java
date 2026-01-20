@@ -65,4 +65,22 @@ public class Produto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public void atualizarInformacoes(DadosAtualizacaoProduto dadosAtualizacaoProduto) {
+        if (dadosAtualizacaoProduto.nome() != null) {
+            this.nome = dadosAtualizacaoProduto.nome();
+        }
+
+        if (dadosAtualizacaoProduto.descricao() != null) {
+            this.descricao = dadosAtualizacaoProduto.descricao();
+        }
+
+        if (dadosAtualizacaoProduto.preco() != null) {
+            this.preco = dadosAtualizacaoProduto.preco();
+        }
+
+        if (dadosAtualizacaoProduto.categoria() != null) {
+            this.categoria = dadosAtualizacaoProduto.categoria();
+        }
+    }
 }

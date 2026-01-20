@@ -1,5 +1,6 @@
 package com.example.catalog_api.controller;
 
+import com.example.catalog_api.model.DadosAtualizacaoProduto;
 import com.example.catalog_api.model.DadosCadastroProduto;
 import com.example.catalog_api.model.DadosListagemProduto;
 import com.example.catalog_api.model.Produto;
@@ -30,6 +31,15 @@ public class ProdutoController {
         return repository.findAll().stream().map(DadosListagemProduto::new)
                 .collect(Collectors.toList());
     }
+
+    @PutMapping
+    @Transactional
+    public void alterarProduto(@RequestBody DadosAtualizacaoProduto dadosAtualizacaoProduto) {
+            var produto = repository.getReferenceById(dadosAtualizacaoProduto.id());
+            produto.atualizarInformacoes(dadosAtualizacaoProduto);
+    }
+
+
 
 
 
